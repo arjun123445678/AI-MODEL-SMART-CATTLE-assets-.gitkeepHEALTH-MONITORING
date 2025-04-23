@@ -1,15 +1,107 @@
-# AI-MODEL-SMART-CATTLE-HEALTH-MONITORING
-Introducing an AI model built using STM32BL475EIOT1A board and deep learning to revolutionize the monitoring process. dairy cows' health and well-being are paramount.
- To address this issue, In this project machine-learning model that can detect the health condition of cattle based on various parameters like body temperature, pulse rate, respiratory rate, rumen fill, etc![image](https://github.com/user-attachments/assets/a4c15b31-7aa3-4dcc-bb8f-b51fc848ff27)
-Neural Network Architecture:
-Input Layer (Dense):   Size: 64 neurons Activation Function: Rectified Linear Unit (ReLU) 
-Hidden Layer (Dense): Size: 32 neurons Activation Function: Rectified Linear Unit (ReLU) 
-Output Layer (Dense): Size: Dependent on the number of classes in the target variable Activation Function:
-Softmax (for multi-class classification using sparse categorical cross-entropy).
-Model Training
-Split Dataset: Divide the dataset into training and validation sets (80% training, 20% validation). • 
-Training: Train the model for 150 epochs with a batch size of 10 using the numerical features as input and the target variable (health status) for supervision. 
- Model Evaluation: Evaluate the model on the validation set to assess its performance in terms of loss and accuracy. 
-. Prediction and Evaluation • Generate predictions on the validation set and convert them to binary format based on a threshold of 0.5
-• Generation of the C code for the model The model can feed to STM32 MX Tool. In that tool, we select a board after that we can feed the model and select the analysis and validation and it can generate c code for this model.
-• Validation on target Set up an STM32 project in Cube IDE, select the microcontroller variant, and configure settings. Add ML libraries, integrate the model code, prepare input data, run inference, and validate results in Cube IDE
+# 🐄 AI-MODEL-SMART-CATTLE-HEALTH-MONITORING
+
+An AI-powered smart cattle health monitoring system developed using the **STM32 B-L475E-IOT01A** board. This project leverages **deep learning** and embedded **Edge AI** to monitor the health status of dairy cows in real-time, helping to improve animal welfare and prevent potential diseases.
+
+---
+
+## 📌 Project Overview
+
+This system uses a trained neural network model optimized for deployment on STM32 microcontrollers. Sensor data such as temperature, humidity,  are used to classify cattle health into categories like **Normal**, **Mild**, or **Severe** stress.
+
+---
+
+## 🧠 AI Model Architecture
+
+- **Input Layer**:  
+  - Type: Dense  
+  - Size: 64 neurons  
+  - Activation: ReLU
+
+- **Hidden Layer**:  
+  - Type: Dense  
+  - Size: 32 neurons  
+  - Activation: ReLU
+
+- **Output Layer**:  
+  - Type: Dense  
+  - Size: Depends on number of classes  
+  - Activation: Softmax (for multi-class classification)
+
+---
+
+## 📊 Model Training
+
+- **Dataset Split**:  
+  - 80% Training  
+  - 20% Validation
+
+- **Training Parameters**:  
+  - Epochs: 150  
+  - Batch Size: 10  
+  - Loss Function: Sparse Categorical Crossentropy  
+  - Optimizer: Adam
+
+- **Evaluation**:  
+  - Performance evaluated on the validation set using accuracy and loss metrics.  
+  - Predictions converted to binary format using a threshold of 0.5.
+
+---
+
+## ⚙️ Model Deployment on STM32
+
+### 1. Generate C Code
+- Use **STM32Cube.AI** (integrated in STM32CubeMX) to:
+  - Import the `.h5` model
+  - Run analysis and validation
+  - Generate C code for inference
+
+### 2. Setup STM32CubeIDE Project
+- Select **STM32 B-L475E-IOT01A**
+- Add Cube.AI and X-CUBE-AI middleware
+- Integrate the generated model files into the project
+- Prepare input sensor data (temperature, humidity, activity)
+- Run inference and display results (e.g., on UART or LCD)
+
+---
+
+## 🔌 Hardware Requirements
+
+- STM32 B-L475E-IOT01A board  
+
+---
+
+## 🖥️ Software Requirements
+
+- STM32CubeIDE  
+- STM32CubeMX  
+- Python (for model training, optional)  
+- TensorFlow / Keras  
+- STM32Cube.AI Toolkit
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+---
+
+## 🤝 Acknowledgements
+
+- STMicroelectronics for the STM32 ecosystem  
+- TensorFlow/Keras for model building  
+- Community contributors for tutorials and support
+
+---
+
+## 🚀 Future Work
+
+- Cloud dashboard integration using ESP8266 + ThingSpeak  
+- Add real-time alert system (SMS/Push Notification)  
+- Expand model with time-series data for improved accuracy
+
+
+## 💬 Contact
+
+For questions or collaboration, feel free to reach out via GitHub Issues or email.
+
